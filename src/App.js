@@ -1,6 +1,8 @@
 import React,{useState} from 'react';
 import './App.css';
-import { TiDeleteOutline } from "react-icons/ti";
+import {TiDeleteOutline} from "react-icons/ti";
+import {MdDone} from "react-icons/md";
+
 
 
 function App() {
@@ -26,7 +28,7 @@ function App() {
         </div>
         <div className="todo-btn-container">
 
-          <button type="button" className={`task-btn ${isCompleteScreen === false ?'active' : ''}`} onClick={() => setIsCompleteScreen (false)} >Tasks</button>
+          <button type="button" className={`task-btn ${isCompleteScreen === false ?'active' : ''}`} onClick={() => setIsCompleteScreen (false)}>Tasks</button>
 
           <button type="button" className={`task-btn ${isCompleteScreen === true ?'active': ''}`} onClick={() => setIsCompleteScreen (true)}>Completed</button>
         </div>
@@ -35,9 +37,12 @@ function App() {
               <div className="todo-list-items">
                 <h3>Task 1</h3>
                 <p>Description</p>
+              </div>
+              <div className='icons'>
+                <TiDeleteOutline className="del-icon"/>
+                <MdDone className="done-icon"/>
 
               </div>
-
           </div>
       </div>
     </div>

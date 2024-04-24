@@ -1,5 +1,7 @@
 .App {
-  
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: large;
+
 }
 h1{
   text-align: center;
@@ -31,8 +33,10 @@ body{
 .todo-inputs{
   display: flex;
   flex-direction: column;
-  align-items: center ;
+  justify-content: flex-start;
+  align-items: flex-start ;
   margin-right: 25px;
+
 
 }
 .todo-inputs label{
@@ -43,6 +47,7 @@ body{
   padding: 10px 20px;
   width: 250px;
   border: none;
+  font-size: 17px;
   border-radius:30px ;
   -webkit-border-radius:30px ;
   -moz-border-radius:30px ;
@@ -58,6 +63,8 @@ body{
   margin-top: 28px;
   width: 100px;
   border-radius:30px;
+  font-weight: bold;
+  font-size: 17px;
   border: none;
   color: white;
   background-color: orange;
@@ -76,6 +83,8 @@ body{
   border-radius:30px;
   border: none;
   color: white;
+  font-weight: bold;
+  font-size: 17px;
   background-color: rgb(39, 37, 37);
   margin: 10px auto ;
   cursor: pointer;
@@ -86,14 +95,54 @@ body{
 }
 .todo-task-list{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  background-color: rgb(54, 52, 52);
   margin-top: 20px;
-
+  border-radius: 30px;
 }
 .todo-list-items{
-  background-color: rgb(54, 52, 52);
   padding: 10px 20px;
-  border-radius: 30px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   justify-content: space-between;
+}
+.todo-list-items h3{
+  font-size: 25px;
+  color: orange;
+  font-weight: bold;
+  margin: 2px;
+}
+
+.todo-list-items p{
+  font-size: 14px;
+  color: aliceblue;
+  margin-top: 10px;
+  font-size: 17px;
+
+}
+
+.icons{
+  display: flex;
+  flex-direction: row;
+  margin-right: 20px;
+  padding: 10px;
+
+}
+.icons .del-icon{
+  font-size: 35px;
+  cursor: pointer;
+}
+.icons .del-icon:hover{
+  color: red;
+}
+.icons .done-icon{
+  font-size: 35px;
+  cursor: pointer;
+  color: orange;
+  margin-left: 10px;
+}
+.icons .done-icon:hover{
+  color: green;
+
 }

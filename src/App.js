@@ -27,7 +27,7 @@ function App() {
 
  const deleteTask= index => {
   const reducedTasksArray = [...allTasks];
-  reducedTasksArray.splice(index);
+  reducedTasksArray.splice(index,1  );
 
   localStorage.setItem('todolist',JSON.stringify(reducedTasksArray));
   setTasks(reducedTasksArray);
@@ -134,7 +134,7 @@ const deleteCompletedTask= (index) =>{
               <div className="todo-list-items">
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
-                <p> <small> Completed On: {item.completedOn} </small> </p>
+                <p className='com-time'> <small> Completed On: {item.completedOn} </small> </p>
               </div>
               <div className='icons'>
                 <TiDeleteOutline title='delete' onClick={()=> deleteCompletedTask(index)} className="del-icon"/>

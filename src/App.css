@@ -115,14 +115,19 @@ body{
 }
 
 .todo-list-items p{
-  font-size: 14px;
+  
   color: aliceblue;
   margin-top: 10px;
   font-size: 17px;
 
 }
+.com-time{
+  font-size: 14px;
+  color: rgb(79, 80, 82);
 
-.icons{
+}
+
+.icons{       
   display: flex;
   flex-direction: row;
   margin-right: 20px;
@@ -155,3 +160,4 @@ body{
   -ms-transition: 0.3s;
   -o-transition: 0.3s;
 }
+

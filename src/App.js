@@ -57,7 +57,7 @@ localStorage.setItem("completedTask", JSON.stringify(updatedCompletedArray));
  }
 const deleteCompletedTask= (index) =>{
   const reducedTasksArray = [...completedTasks];
-  reducedTasksArray.splice(index);
+  reducedTasksArray.splice(index,1);
 
   localStorage.setItem('completedTasks',JSON.stringify(reducedTasksArray));
   setCompletedTasks(reducedTasksArray);

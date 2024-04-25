@@ -160,4 +160,15 @@ body{
   -ms-transition: 0.3s;
   -o-transition: 0.3s;
 }
+@media only screen and(max-width:600px) {
+  .todo-container{
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  .todo-task-list{
+    width: 80%;
+  }
+}
 

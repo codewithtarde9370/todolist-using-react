@@ -8,6 +8,7 @@ function App() {
   const [allTasks, setTasks] = useState([]);
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
+  const [completedTasks, setCompletedTasks] = useState([]);
 
  const addTasks= ()=> {
    const newTaskItem = {
@@ -32,13 +33,49 @@ function App() {
   setTasks(reducedTasksArray);
  }
 
+ const handleCompleted= (index) => {
+  const now = new Date();
+  const dd = now.getDate();
+  const mm = now.getMonth() + 1;
+  const yyyy = now.getFullYear();
+  const  hr = now.getHours();
+  const min = now.getMinutes();
+  const sec = now.getSeconds(); 
+  const completedOn = dd + '-' + mm + '-' + yyyy+ ' at '+ hr + ':' + min + ':' + sec;
+
+const filteredItem = {
+
+  ...allTasks[index],
+  completedOn:completedOn
+}
+const updatedCompletedArray = [...completedTasks];
+updatedCompletedArray.push(filteredItem);
+setCompletedTasks(updatedCompletedArray);
+deleteTask(index);
+localStorage.setItem("completedTask", JSON.stringify(updatedCompletedArray));
+
+ }
+const deleteCompletedTask= (index) =>{
+  const reducedTasksArray = [...completedTasks];
+  reducedTasksArray.splice(index);
+
+  localStorage.setItem('completedTasks',JSON.stringify(reducedTasksArray));
+  setCompletedTasks(reducedTasksArray);
+
+}
+
  // When initializing state (e.g., in useEffect)
  useEffect(() => {
   try {
     const storedTasks = JSON.parse(localStorage.getItem("todolist"));
+    const storeCompletedTasks = JSON.parse(localStorage.getItem("completedTask"));
     if (storedTasks) {
       setTasks(storedTasks);
     }
+    if (storeCompletedTasks) {
+      setCompletedTasks(storeCompletedTasks);
+    }
+
   } catch (error) {
     console.error("Error parsing JSON:", error);
     // Handle the error (e.g., clear localStorage, show an error message)
@@ -62,7 +99,7 @@ function App() {
           </div>
           <div className="todo-inputs">
             
-          <button type="submit" onClick={addTasks} className="primary-btn">Add</button>
+          <button type="submit" title='Add Task' onClick={addTasks} className="primary-btn">Add</button>
           </div>
 
         </div>
@@ -74,7 +111,7 @@ function App() {
           <button type="button" className={`task-btn ${isCompleteScreen === true ?'active': ''}`} onClick={() => setIsCompleteScreen (true)}>Completed</button>
         </div>
 
-          {allTasks.map((item,index)=>{
+          {isCompleteScreen===false && allTasks.map((item,index)=>{
             return(
               <div className="todo-task-list" key={index}>
               <div className="todo-list-items">
@@ -82,8 +119,26 @@ function App() {
                 <p>{item.description}</p>
               </div>
               <div className='icons'>
-                <TiDeleteOutline onClick={()=> deleteTask(index)}className="del-icon"/>
-                <MdDone className="done-icon"/>
+                <TiDeleteOutline title='delete' onClick={()=> deleteTask(index)} className="del-icon"/>
+                <MdDone title='completed' onClick={()=>handleCompleted(index)} className="done-icon"/>
+
+              </div>
+          </div>
+            )
+          }
+         ) }
+
+{isCompleteScreen===true && completedTasks.map((item,index)=>{
+            return(
+              <div className="todo-task-list" key={index}>
+              <div className="todo-list-items">
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <p> <small> Completed On: {item.completedOn} </small> </p>
+              </div>
+              <div className='icons'>
+                <TiDeleteOutline title='delete' onClick={()=> deleteCompletedTask(index)} className="del-icon"/>
+          
 
               </div>
           </div>

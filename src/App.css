@@ -135,6 +135,11 @@ body{
 }
 .icons .del-icon:hover{
   color: red;
+  transition: 1s;
+  -webkit-transition:0.3s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
 }
 .icons .done-icon{
   font-size: 35px;
@@ -144,5 +149,9 @@ body{
 }
 .icons .done-icon:hover{
   color: green;
-
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
 }
